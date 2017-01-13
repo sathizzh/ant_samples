@@ -1,0 +1,25 @@
+<!-- Include a external jar for the Tax to work --> 
+<?xml version="1.0"?>
+<project name="FinanceProject">
+	<property name="parent.dir" value="D:\Ant Samples" />
+	<target name="compile">
+	<echo>Compiling Tax Class</echo>
+		<fileset dir="${parent.dir}/jars/" >  
+			<include name="**/*.jar" />  
+		</fileset> 
+        <javac srcdir="${parent.dir}\src" destdir="${parent.dir}\classes"/>
+    </target>
+	<target name="jar" depends="compile">
+	<echo>Packaging Tax Class</echo>
+		<mkdir dir="${parent.dir}\jars" />
+        <jar destfile="${parent.dir}\jars\FinanceProject.jar" basedir="${parent.dir}\classes" >
+            <manifest>
+                <attribute name="Main-Class" value="mypack.Tax"/>
+            </manifest>
+        </jar>
+    </target>
+	<target name="calculateTax" depends="jar">
+	<echo>Executing Tax Class</echo>
+	<java jar="${parent.dir}\jars\FinanceProject.jar" fork="true"/>
+	</target>
+</project>

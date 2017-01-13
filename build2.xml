@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!-- Create and Execute a JAR -->
+<project name="EmployeeProject">
+	<target name="compile">
+		<echo>Compiling Employee Class</echo>
+		<mkdir dir="D:\Ant Samples\classes" />
+        <javac srcdir="D:\Ant Samples\src" destdir="D:\Ant Samples\classes"/>
+    </target>
+	
+	<target name="jar" depends="compile">
+		<echo>Packaging Employee Class</echo>
+		<mkdir dir="D:\Ant Samples\jars" />
+        <jar destfile="D:\Ant Samples\jars\EmployeeProject.jar" basedir="D:\Ant Samples\classes" >
+            <manifest>
+                <attribute name="Main-Class" value="mypack.Employee"/>
+            </manifest>
+        </jar>
+    </target>
+	
+	<target name="runEmployee" depends="jar">
+		<echo>Executing Employee Class</echo>
+		<java jar="D:\Ant Samples\jars\EmployeeProject.jar" fork="true"/>
+	</target>
+
+	</project>

@@ -1,0 +1,27 @@
+<!-- Using Condition To create a Directory -->
+<?xml version="1.0"?>
+<project name="BackupProject">
+	<property name="parent.dir" value="D:\Ant Samples" />
+	
+	<target name="check">
+		<available file="${parent.dir}\backup" type="dir" property="output.dir.exists"/>
+	</target>	
+	
+	<target name="checkStatusok" depends="check" if="output.dir.exists">
+		<echo>Directory ${parent.dir}\backup exists.</echo>
+	</target>
+	
+	<target name="checkStatusfail" depends="check" unless="output.dir.exists">
+		<echo>Creating directory ${parent.dir}\backup.</echo>
+		<mkdir dir="${parent.dir}\backup" />
+	</target>
+	
+	<target name="copyProject" depends="checkStatusok,checkStatusfail">
+	<echo>Copying ${parent.dir}\jars to ${parent.dir}\backup</echo>
+	<copy todir="${parent.dir}\backup">
+		<fileset dir="${parent.dir}\jars">
+			<exclude name="*.java"/>
+		</fileset>
+	</copy>
+	</target>
+</project>

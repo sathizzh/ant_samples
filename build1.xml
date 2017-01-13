@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- Compile and Execute a Java Program -->
+<project name="EmployeeProject" default="compileEmployee">
+	<target name="compileEmployee">
+	<echo>Compiling Employee Class</echo>
+	<javac srcdir="D:\Ant Samples\src" destdir="D:\Ant Samples\classes"/>
+</target>
+<target name="runEmployee">
+	<echo>Executing Employee Class</echo>
+	<java Classname="mypack.Employee" classpath="D:\Ant Samples\classes" fork="false"/>
+</target>
+</project>

@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<!-- Display a Message -->
+<project name="EmployeeProject">
+<target name="showMsg">
+	<echo>coooooool dudeeeeeeeee....!!!</echo>
+</target>
+</project>

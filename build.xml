@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<!-- Display a Message -->
+<project name="EmployeeProject">
+<target name="showMsg">
+	<echo>Welcome To My Apache Ant Demo....!!!</echo>
+</target>
+</project>

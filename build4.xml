@@ -1,0 +1,18 @@
+<!-- Copy Directory -->
+<?xml version="1.0"?>
+<project name="BackupProject">
+	<property name="parent.dir" value="D:\Ant Samples" />
+	
+	<target name="copyProject" >
+	<echo>Copying ${parent.dir}\jars to ${parent.dir}\backup</echo>
+	<mkdir dir="${parent.dir}\backup" />
+	<copy todir="${parent.dir}\backup">
+		<fileset dir="${parent.dir}\jars">
+			<exclude name="*.java"/>
+		</fileset>
+	</copy>
+	</target>
+</project>
+
+
+<!-- <copy file="Employee.java" tofile="${parent.dir}/backup/Employee.java"/>

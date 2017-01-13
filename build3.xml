@@ -1,0 +1,24 @@
+<!-- Using Property File -->
+<?xml version="1.0"?>
+<project name="EmployeeProject">
+	<property name="parent.dir" value="D:\Ant Samples" />
+	<property name="authorname" value="Aravind" />
+	<target name="compile">
+	<echo>Created by ${authorname}</echo>
+	<echo>Compiling Employee Class</echo>
+        <javac srcdir="${parent.dir}\src" destdir="${parent.dir}\classes"/>
+    </target>
+	<target name="jar" depends="compile">
+	<echo>Packaging Employee Class</echo>
+		<mkdir dir="${parent.dir}\jars" />
+        <jar destfile="${parent.dir}\jars\EmployeeProject.jar" basedir="${parent.dir}\classes" >
+            <manifest>
+                <attribute name="Main-Class" value="mypack.Employee"/>
+            </manifest>
+        </jar>
+    </target>
+	<target name="runEmployee" depends="jar">
+	<echo>Executing Employee Class</echo>
+	<java jar="${parent.dir}\jars\EmployeeProject.jar" fork="true"/>
+	</target>
+</project>
